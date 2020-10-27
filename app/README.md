@@ -10,3 +10,4 @@ You will also see any lint errors in the console.
 
 ### `npm run start-api`
 Runs the Flask API for Python 
+Make sure you run `source venv/bin/activate` in the api/ folder before using this script
