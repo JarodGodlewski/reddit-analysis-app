@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import * as d3 from "d3";
+import AvgPostSuccessGraph from './AvgPostSuccessGraph';
  
 const PerformanceGraphs = () => {
 
@@ -12,6 +12,9 @@ const PerformanceGraphs = () => {
            setGraphData(data);
        })
    }, []);
+
+   const chartData = [{x: graphData.x_values, y: graphData.y_values }];
+  
    // remove the , [] to allow for constant updates
 
     return (
@@ -22,6 +25,7 @@ const PerformanceGraphs = () => {
           <h1>Average Post Success Per Hour</h1>
             <p>X Values {graphData.x_values}</p>
             <p>Y Values {graphData.y_values}</p>
+            <AvgPostSuccessGraph data={chartData} width={400} height={300}/>
        </div>
     );
 }
