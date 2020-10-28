@@ -10,7 +10,8 @@ const Home = () => {
         .then(data => {
             setCurrentTime(data.time);
         })
-    });
+    },[]);
+    // remove the , [] to allow for constant updates
 
     return (
        <SplashPage>
