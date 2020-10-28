@@ -1,6 +1,6 @@
 import time
 from flask import Flask
-from data import pull_subreddits
+from .data import pull_subreddits
 
 app = Flask(__name__)
 reddit = pull_subreddits.RedditData()
