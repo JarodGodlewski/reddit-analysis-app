@@ -15,16 +15,18 @@ class RedditData:
 
     # list of subreddits to process
     # subreddit_names = ["cscareerquestions", "talesfromretail", "csmajors", "fantheories", "bestoflegaladvice", "legaladvice", "Idontworkherelady", "unresolvedmysteries", "MaliciousCompliance", "lifeofnorman"]
-    # subreddit_names = ["all"]
-    subreddit_names = ["cscareerquestions", "talesfromretail", "csmajors"]
+    subreddit_names = ["rabbits"]
+    #subreddit_names = ["cscareerquestions", "talesfromretail", "csmajors"]
     subreddit_data = []
     time_avg = OrderedDict()
 
+    comment_times = {}
     # reads file named auth to get id and secret for api - for some reason had to change to actual path
     # setup time_avg
     def __init__(self):
-        dir = "C:/Users/boait/Documents/GitHub/reddit-analysis-app"
-        f = open(dir + "/auth.txt", "r")
+        #dir = "C:/Users/boait/Documents/GitHub/reddit-analysis-app"
+        #f = open(dir + "/auth.txt", "r")
+        f = open("data/auth", "r")
         id = f.readline().strip()
         secret = f.readline().strip()
 
@@ -39,7 +41,7 @@ class RedditData:
         for i in range(0, 24):
             self.time_avg[i] = [0, 0, 0]
 
-        self.get_subreddit_data()
+        #self.get_subreddit_data()
 
     # attain subreddit data to use
     # may need to change comment count from len, check api
@@ -88,14 +90,34 @@ class RedditData:
 
         return [x_values, y_values]
 
-    # get comment data with time stamps
+    # get comment data with time stamps for a specific subreddit
     def get_comment_data(self):
 
-        for subname in self.subreddit_names:
-            for submission in self.reddit.subreddit(subname).hot(limit=3):
-                print(submission.title)
-                submission.comments.replace_more(limit=0)
-                for comment in submission.comments:
-                    time_diff = submission.created - comment.created
+        #change to use search functionality
+        for submission in self.reddit.subreddit("all").hot(limit=1):
+            print(submission.title)
+            submission.comments.replace_more(limit=10)
+            ctr = 0
+            for comment in submission.comments:
+                time_diff =  (comment.created - submission.created) // 60
+                if (time_diff in self.comment_times):
+                    self.comment_times[time_diff] += 1
+                else:
+                    self.comment_times[time_diff] = 1
+                ctr += 1
+            print(ctr)
+                #print("Minutes: " + str(time_diff // 60) + " Seconds: " + str(time_diff % 60))
+                #print('\n')
 
-                    print('\n')
+    def post_comment_times_graph(self):
+        x_values = sorted(self.comment_times.keys())
+        y_values = [self.comment_times[i] for i in x_values]
+        y_values_accum = [y_values[0]]
+        for i in range(1,len(y_values)-1):
+            y_values_accum.append(y_values_accum[i-1]+y_values[i])
+        print(len(x_values))
+        print(len(y_values))
+        for i in range(0, len(x_values)-1):
+            print(x_values[i], y_values_accum[i])
+        
+        return [x_values, y_values_accum]
