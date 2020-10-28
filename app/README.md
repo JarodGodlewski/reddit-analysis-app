@@ -1,5 +1,14 @@
 You need two separate Terminals to run each command.
 
+Install the following python3 modules:
+
+`pip install <module`
+
+flask
+pytz
+praw
+
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
