@@ -2,6 +2,7 @@
 
 # api file
 auth
+app/api/venv
 
 # dependencies
 app/node_modules
