@@ -4,17 +4,18 @@ import AvgPostSuccessGraph from './AvgPostSuccessGraph';
 const PerformanceGraphs = () => {
 
    const [graphData, setGraphData] = useState([]);
-
+   const [recieved, setRecieved] = useState(false);
    useEffect( () => {
        fetch('/get_avg_upvote_time')
        .then(res => res.json())
        .then(data => {
            setGraphData(data);
+           setRecieved(true);
        })
    }, []);
 
    const chartData = [{x: graphData.x_values, y: graphData.y_values }];
-  
+//    console.log(graphData.y_values.length);
    // remove the , [] to allow for constant updates
 
     return (
@@ -25,9 +26,12 @@ const PerformanceGraphs = () => {
           <h1>Average Post Success Per Hour</h1>
             <p>X Values {graphData.x_values}</p>
             <p>Y Values {graphData.y_values}</p>
-            <AvgPostSuccessGraph data={chartData} width={400} height={300}/>
+            
+            {recieved ? <AvgPostSuccessGraph data={chartData} width={400} height={300}/> : <div/>}
        </div>
     );
 }
  
+
+
 export default PerformanceGraphs;

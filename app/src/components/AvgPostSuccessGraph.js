@@ -1,94 +1,90 @@
 import React, { useEffect } from 'react';
 import * as d3 from 'd3';
+import './graph.css';
 
+class AvgPostSuccessGraph extends React.Component {
+    render() {
+        // function drawChart() {
+        //     console.log(data)
+        //     if (data[0].x == undefined) {
+        //         return;
+        //     } else {
+                const { data, width, height } = this.props
+                // transforming data to match codepen exampe [{a: val, b:val}...]
+                    console.log("got data");
+                let margin = 20;
+                const h = height - 2 * margin, w = width - 2 * margin
 
-// const AvgPostSuccessGraph = settings => {
-    
+                var lst = [];
+                data[0].x.forEach(function (item, index) {
+                    lst.push({a:data[0].x[item], b:data[0].y[index]})
 
-//     useEffect(() => {
-//         drawChart();
-//     }, [settings]);
+                });
+                console.log(lst);
+                var fresh_data = lst;
+            
+                //number formatter
+                const xFormat = d3.format('.2')
 
-//     function drawChart(){
-//         // Add logic to draw the chart here
-//         const { data, width, height } = settings;
-//         const margin = { top: 50, right: 50, bottom: 50, left: 50 };
-//         const yMinValue = d3.min(data, d => d.y);
-//         const yMaxValue = d3.max(data, d => d.y);
-//         const xMinValue = d3.min(data, d => d.x);
-//         const xMaxValue = d3.max(data, d => d.x);
-//         const warningBar = document.getElementById("container");
-//         console.log(data, width, height)
-//         console.log(warningBar);
-//         const svg = d3
-//             .select('#container')
-//             .append('svg')
-//             .attr('width', width + margin.left + margin.right)
-//             .attr('height', height + margin.top + margin.bottom)
-//             .append('g')
-//             .attr('transform', `translate(${margin.left},${margin.top})`);
-//         const xScale = d3
-//             .scaleLinear()
-//             .domain([xMinValue, xMaxValue])
-//             .range([0, width]);
-//         const yScale = d3
-//             .scaleLinear()
-//             .range([height, 0])
-//             .domain([0, yMaxValue]);
-//         const line = d3
-//             .line()
-//             .x(d => xScale(d.x))
-//             .y(d => yScale(d.y))
-//             .curve(d3.curveMonotoneX);
-//     }
-//     return (
-//         < div id="container" />
-//     );
+                //x scale
+                const x = d3.scaleLinear()
+                    .domain(d3.extent(fresh_data, d => d.a)) //domain: [min,max] of a
+                    .range([margin, w])
 
-// }
+                //y scale
+                const y = d3.scaleLinear()
+                    .domain([0, d3.max(fresh_data, d => d.b)]) // domain [0,max] of b (start from 0)
+                    .range([h, margin])
 
+                //line generator: each point is [x(d.a), y(d.b)] where d is a row in data
+                // and x, y are scales (e.g. x(10) returns pixel value of 10 scaled by x)
+                const line = d3.line()
+                    .x(d => x(d.a))
+                    .y(d => y(d.b))
+                    .curve(d3.curveCatmullRom.alpha(0.5)) //curve line
 
-function AvgPostSuccessGraph(props) {
-    const { data, width, height } = props;
-   
-    useEffect(() => {
-      drawChart();
-    }, [data, width, height]);
+                const xTicks = x.ticks(6).map(d => (
+                    x(d) > margin && x(d) < w ?
+                        <g transform={`translate(${x(d)},${h + margin})`}>
+                            <text>{xFormat(d)}</text>
+                            <line x1='0' x1='0' y1='0' y2='5' transform="translate(0,-20)" />
+                        </g>
+                        : null
+                ))
 
-    
-    function drawChart() {
-        console.log(data)
-        if(data[0].x == undefined){
-            return;
-        }
+                const yTicks = y.ticks(5).map(d => (
+                    y(d) > 10 && y(d) < h ?
+                        <g transform={`translate(${margin},${y(d)})`}>
+                            <text x="-12" y="5">{xFormat(d)}</text>
+                            <line x1='0' x1='5' y1='0' y2='0' transform="translate(-5,0)" />
+                            <line className='gridline' x1='0' x1={w - margin} y1='0' y2='0' transform="translate(-5,0)" />
+                        </g>
+                        : null
+                ))
+
+        //     }
+        // }
+
+        // drawChart();
         
-      const margin = { top: 50, right: 50, bottom: 50, left: 50 };
-      const yMinValue = d3.min(data[0].y);
-      const yMaxValue = d3.max(data[0].y);
-      const xMinValue = d3.min(data[0].x);
-      const xMaxValue = d3.max(data[0].x);
-      const svg = d3
-          .select('#container')
-          .append('svg')
-          .attr('width', width + margin.left + margin.right)
-          .attr('height', height + margin.top + margin.bottom)
-          .append('g')
-          .attr('transform', `translate(${margin.left},${margin.top})`);
-      const xScale = d3
-          .scaleLinear()
-          .domain([xMinValue, xMaxValue])
-          .range([0, width]);
-      const yScale = d3
-          .scaleLinear()
-          .range([height, 0])
-          .domain([0, yMaxValue]);
-      const line = d3
-          .line()
-          .x(d => xScale(d.x))
-          .y(d => yScale(d.y))
-          .curve(d3.curveMonotoneX);
+        
+        return (
+            <svg width={width} height={height}>
+                <line className="axis" x1={margin} x2={w} y1={h} y2={h} />
+                <line className="axis" x1={margin} x2={margin} y1={margin} y2={h} />
+                <path d={line(data)} />
+                <g className="axis-labels">
+                    {xTicks}
+                </g>
+                <g className="axis-labels">
+                    {yTicks}
+                </g>
+            </svg>
+        )
+        // }
     }
-    return <div id="container" />;
-  }
+}
+
+
 
 export default AvgPostSuccessGraph;

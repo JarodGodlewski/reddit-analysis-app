@@ -28,6 +28,7 @@ yarn-error.log*
 auth.txt
 app/api/__pycache__
 app/api/data/__pycache__
+app/api/data/auth.text
 .idea
 app/api/__pycache__/app.cpython-38.pyc
 app/api/__pycache__/app.cpython-38.pyc
