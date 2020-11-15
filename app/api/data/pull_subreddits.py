@@ -1,6 +1,7 @@
 import math
 import praw
 import pytz
+import string
 from .post import post
 from .subreddit import subreddit
 from .comment import comment
@@ -121,3 +122,17 @@ class RedditData:
             print(x_values[i], y_values_accum[i])
         
         return [x_values, y_values_accum]
+
+    def get_word_correlation_data(self):
+        word_freq = {}
+        articles = ['and', 'the', 'for', 'a', 'if', 'it', 'its', 'from', 'this', 'at']
+        for submission in self.reddit.subreddit("politics").top(limit=100):
+            title = submission.title.translate(str.maketrans('','',string.punctuation))
+            title_words = title.strip().split()
+            for word in title_words:
+                if not (word in articles):
+                    if (word.lower() in word_freq):
+                        word_freq[word.lower()] += 1
+                    else:
+                        word_freq[word.lower()] = 1
+        return word_freq
