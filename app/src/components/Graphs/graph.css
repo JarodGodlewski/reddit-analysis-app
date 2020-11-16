@@ -1,9 +1,9 @@
-svg {
+.AvgGraph {
     fill: #000;
     fill-opacity: 0.3;
   }
   
-  path {
+  .AvgPath {
     stroke: steelblue;
     stroke-width: 2px;
     fill: none;

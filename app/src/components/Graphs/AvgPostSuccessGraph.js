@@ -69,10 +69,10 @@ class AvgPostSuccessGraph extends React.Component {
         
         
         return (
-            <svg width={width} height={height}>
+            <svg id='AvgGraph' width={width} height={height}>
                 <line className="axis" x1={margin} x2={w} y1={h} y2={h} />
                 <line className="axis" x1={margin} x2={margin} y1={margin} y2={h} />
-                <path d={line(data)} />
+                <path id='AvgPath' d={line(data)} />
                 <g className="axis-labels">
                     {xTicks}
                 </g>
