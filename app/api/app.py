@@ -20,3 +20,8 @@ def get_comments_time_graph():
     reddit.get_comment_data()
     data = reddit.post_comment_times_graph()
     return {'x_values': data[0], 'y_values': data[1]}
+
+@app.route('/get_word_correlation')
+def get_word_correlation_graph():
+    data = reddit.get_word_correlation_data()
+    return {'word_freq': data}
