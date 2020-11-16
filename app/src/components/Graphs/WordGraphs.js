@@ -2,7 +2,7 @@ import React from 'react';
  
 const WordGraphs = () => {
     return (
-       <div>
+       <div id="WordGraphs">
           <h1>Word Correlation Graphs</h1>
           <p>This page will show graphs of sub-reddits word correlations</p>
        </div>

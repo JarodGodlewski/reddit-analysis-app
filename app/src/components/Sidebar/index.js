@@ -14,6 +14,7 @@ const Sidebar = ({ isOpen, toggle }) => {
         <CloseIcon />
       </Icon>
       <SidebarMenu>
+        <SidebarLink to="Home" spy={true} smooth={true}>Home</SidebarLink>
         <SidebarLink to="PerfGraphs" spy={true} smooth={true}>Performance Graphs</SidebarLink>
         <SidebarLink to="APSGraph" spy={true} smooth={true}>Average Post Success Per hour</SidebarLink>
         <SidebarLink to="WordGraphs" spy={true} smooth={true}>Word Correlation Graphs</SidebarLink>

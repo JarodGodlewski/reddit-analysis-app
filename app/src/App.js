@@ -12,12 +12,8 @@ const App = () => {
       <>     
         <GlobalStyle />
         <Hero />
-        <div id="PerfGraphs"> 
-          <PerformanceGraphs id="PerformanceGraphs" />
-        </div>
-        <div id="WordGraphs"> 
-          <WordGraphs id="WordGraphs" />
-        </div>
+        <PerformanceGraphs id="PerformanceGraphs" />
+        <WordGraphs id="WordGraphs" />
       </>
     );
   }
