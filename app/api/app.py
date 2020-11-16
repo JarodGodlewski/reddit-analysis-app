@@ -24,4 +24,4 @@ def get_comments_time_graph():
 @app.route('/get_word_correlation')
 def get_word_correlation_graph():
     data = reddit.get_word_correlation_data()
-    return {'word_freq': data}
+    return {'words': data[0], 'freq': data[1]}

@@ -13,7 +13,7 @@ const WordGraphs = () => {
             })
     }, []);
 
-    console.log(graphData);
+    //console.log(graphData.words);
     
     return (
        <div>
