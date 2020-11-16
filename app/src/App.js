@@ -8,13 +8,13 @@ import { GlobalStyle } from './globalStyles';
 import Hero from './components/Hero';
  
 const App = () => {
-    return (      
-       <BrowserRouter>
+    return ( 
+      <>     
         <GlobalStyle />
         <Hero />
-        <PerformanceGraphs />
-        <WordGraphs />
-      </BrowserRouter>
+        <PerformanceGraphs id="PerformanceGraphs" />
+        <WordGraphs id="WordGraphs" />
+      </>
     );
   }
 

@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import { NavLink as Link } from 'react-router-dom';
-import { FaPizzaSlice } from 'react-icons/fa';
+import { Link } from 'react-scroll';
+import { BiNetworkChart } from 'react-icons/bi';
 
 export const Nav = styled.nav`
   background: transparent;
   height: 80px;
   display: flex;
   justify-content: center;
-  font-size: clamp(2rem, 2.5vw, 3rem));
   font-weight: 700;
 `;
 
@@ -33,12 +32,12 @@ export const NavIcon = styled.div`
   cursor: pointer;
   color: #e9ba23;
   p {
-    transform: translate(-175%, 100%);
+    transform: translate(-140%, 125%);
+    font-weight: bold;
   }
 `;
 
-export const Bars = styled(FaPizzaSlice)`
-  font-size: 4rem;
-  transform: translate(-50%, -15%);
-  color: #e9ba23;
+export const Bars = styled(BiNetworkChart)`
+  font-size: 3rem;
+  transform: translate(-25%, -15%);
 `;

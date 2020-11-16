@@ -19,7 +19,7 @@ const PerformanceGraphs = () => {
    // remove the , [] to allow for constant updates
 
     return (
-       <div>
+       <div id="PerfGraphs" >
           <h1>Performance Graphs</h1>
           <p>This page will show graphs of sub-reddit and post performance.</p>
 
@@ -27,7 +27,7 @@ const PerformanceGraphs = () => {
             <p>X Values {graphData.x_values}</p>
             <p>Y Values {graphData.y_values}</p>
             
-            {recieved ? <AvgPostSuccessGraph data={chartData} width={400} height={300}/> : <div/>}
+            {recieved ? <div id="APSGraph"> <AvgPostSuccessGraph data={chartData} width={400} height={300}/> </div>: <div/>}
        </div>
     );
 }

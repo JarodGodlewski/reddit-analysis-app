@@ -16,7 +16,7 @@ const WordGraphs = () => {
     //console.log(graphData.words);
     
     return (
-       <div>
+       <div id="WordGraphs">
           <h1>Word Correlation Graphs</h1>
           <p>This page will show graphs of sub-reddits word correlations</p>
        </div>
