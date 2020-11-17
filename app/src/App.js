@@ -11,11 +11,18 @@ const App = () => {
   useEffect( () => {
     setExists(false);
     fetch('/result', {
-        method:"POST"
+        mode: 'same-origin',
+        method:"POST",
+        body: JSON.stringify({"subreddit": subReddit}),
+        headers: {
+          'Content-Type': 'application/json'
+        },
     })
     .then(res => res.json())
     .then(data => {
+      console.log(data);
       if(data === true){
+        console.log(data);
         setExists(true);
       }
     })
@@ -25,9 +32,8 @@ const App = () => {
       <>     
         <GlobalStyle />
         <Hero setSubReddit={setSubReddit}/>
-        <PerformanceGraphs />
-        { exists ? <PerformanceGraphs /> : <div/>}
-        { exists ? <WordGraphs /> : <div/>}
+        { exists ? <PerformanceGraphs subName={subReddit} /> : <div/>}
+        { exists ? <WordGraphs subName={subReddit}/> : <div/>}
       </>
     );
   }

@@ -1,5 +1,6 @@
 import time
-from flask import Flask
+import json
+from flask import Flask, request
 from .data import pull_subreddits
 
 app = Flask(__name__)
@@ -28,6 +29,16 @@ def get_word_correlation_graph():
 
 @app.route('/result', methods = ['POST'])
 def result():
-    #print(request.body)
-    return 'true'
+    data = request.data.decode('UTF-8')
+    data_as_json = json.loads(data)
+    subreddit_name = data_as_json["subreddit"]
+    print(subreddit_name)
+    exists_val = reddit.check_subreddits(subreddit_name)
+
+    if exists_val == 'true':
+        reddit.set_subreddit(subreddit_name)
+        get_avg_upvote_time_graph()
+        get_comments_time_graph()
+        get_word_correlation_graph()
+    return exists_val
     

@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {render} from 'react-dom';
 import WordCloud from 'react-d3-cloud';
 
-const WordGraphs = () => {
+const WordGraphs = (props) => {
     const [graphData, setGraphData] = useState([]);
     const [received, setReceived] = useState(false);
+    const subredditName = props.subName;
     useEffect( () => {
         fetch('/get_word_correlation')
             .then(res => res.json())
@@ -32,7 +33,7 @@ const WordGraphs = () => {
 
     return (
        <div id="WordGraphs">
-          <h1>Word Correlation Graphs</h1>
+          <h1>Word Correlation Graph for r/{subredditName}</h1>
           <p>This page will show graphs of sub-reddits word correlations</p>
           {received ? <WordCloud data={wordlist} fontSizeMapper={fontSizeMapper}
                                  rotate={rotate} padding={0} width={1200} height={800}></WordCloud> : <div/>};
