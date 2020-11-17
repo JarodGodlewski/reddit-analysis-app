@@ -54,9 +54,15 @@ export const Trash = styled.div`
 
 export const ButtonTableContainer = styled.div`
   display: grid;
-  width: 100%;
-  height: 100%;
-  background: #fff;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  grid-auto-rows: minmax(100px, auto);
+  height: 25%;
+  margin-top: 400px;
+  margin-right: 10px;
+  @media screen and (max-width: 300px) {
+    width: 100%;
+  }
 `;
 
 export const RedditButton = styled.button`

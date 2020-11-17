@@ -32,7 +32,7 @@ const WordGraphs = (props) => {
     //word => word.value % 360;
 
     return (
-       <div id="WordGraphs">
+       <div id="WordGraphs" style={{backgroundColor: "#2E294E", color: "#fff"}}>
           <h1>Word Correlation Graph for r/{subredditName}</h1>
           <p>This page will show graphs of sub-reddits word correlations</p>
           {received ? <WordCloud data={wordlist} fontSizeMapper={fontSizeMapper}

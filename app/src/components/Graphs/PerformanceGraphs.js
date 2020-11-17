@@ -39,16 +39,16 @@ const PerformanceGraphs = (props) => {
           {/* <h1>Performance Graphs</h1>
           <p>This page will show graphs of sub-reddit and post performance.</p> */}
 
-         <div id="APSGraph">
-    <h1>Average Post Success Per Hour for r/{subredditName}</h1>
-    <p>This chart describes the amount of upvotes a post is likely to have based on the time it was posted. This is based upon analysis of the top xx posts on a given subreddit.</p>
-            {receivedAPS ? <div id="APSGraph"> <AvgPostSuccessGraph freshData={chartData}/> </div>: <div/>}
+         <div id="APSGraph" style={{backgroundColor: "#2E294E", color: "#fff"}} >
+    <h1 >Average Post Success Per Hour for r/{subredditName}</h1>
+    <p >This chart describes the amount of upvotes a post is likely to have based on the time it was posted. This is based upon analysis of the top xx posts on a given subreddit.</p>
+            {receivedAPS ? <div id="APSGraph" style={{backgroundColor: "#fff", color: "#2E294E"}}> <AvgPostSuccessGraph freshData={chartData}/> </div>: <div/>}
          </div>
 
-         <div id="CommentGraph">
-          <h1>Top Level Comments Since Post Created for r/{subredditName}</h1>
-    <p>This chart describes</p>
-            {receivedCmt ? <div id="CommentGraph"> <CommentsSincePostGraph freshData={chartCommentData}/> </div>: <div/>}
+         <div id="CommentGraph" style={{backgroundColor: "#2E294E", color: "#fff"}}>
+          <h1 >Top Level Comments Since Post Created for r/{subredditName}</h1>
+    <p >This chart describes</p>
+            {receivedCmt ? <div id="CommentGraph" style={{backgroundColor: "#fff", color: "#2E294E"}}> <CommentsSincePostGraph freshData={chartCommentData}/> </div>: <div/>}
          </div>
        </div>
     );

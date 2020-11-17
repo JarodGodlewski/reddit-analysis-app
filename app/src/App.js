@@ -3,6 +3,7 @@ import WordGraphs from './components/Graphs/WordGraphs';
 import PerformanceGraphs from './components/Graphs/PerformanceGraphs';
 import { GlobalStyle } from './globalStyles';
 import Hero from './components/Hero';
+import styled from 'styled-components';
  
 const App = () => {
   const [subReddit, setSubReddit] = useState("");
@@ -38,5 +39,4 @@ const App = () => {
     );
   }
 
- 
 export default App;
