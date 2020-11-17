@@ -27,7 +27,8 @@ const WordGraphs = () => {
     }
 
     const fontSizeMapper = word => Math.log2(word.value) * 5;
-    const rotate = word => word.value % 360;
+    const rotate = 0;
+    //word => word.value % 360;
 
     return (
        <div id="WordGraphs">
