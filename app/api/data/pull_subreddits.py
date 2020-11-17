@@ -14,11 +14,13 @@ class RedditData:
     est = pytz.timezone('US/Eastern')
     reddit = None
 
-    # list of subreddits to process
+    # list of subreddits to pull from
     subreddit_set = ["cscareerquestions", "talesfromretail", "csmajors", "fantheories", "bestoflegaladvice",
                      "legaladvice", "Idontworkherelady", "unresolvedmysteries", "MaliciousCompliance", "lifeofnorman"]
-    # subreddit_names = ["rabbits"]
+
+    # this is the central subreddit
     subreddit_names = []
+
     subreddit_data = []
     time_avg = OrderedDict()
 
@@ -29,7 +31,7 @@ class RedditData:
     def __init__(self):
         # dir = "C:/Users/boait/Documents/GitHub/reddit-analysis-app"
         # f = open(dir + "/auth.txt", "r")
-        f = open("data/auth.txt", "r")
+        f = open("data/auth", "r")
         id = f.readline().strip()
         secret = f.readline().strip()
 
