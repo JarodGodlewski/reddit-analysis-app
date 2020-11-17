@@ -125,7 +125,7 @@ class RedditData:
 
     def get_word_correlation_data(self):
         word_freq = {}
-        articles = ['and', 'the', 'for', 'a', 'if', 'it', 'its', 'from', 'this', 'at', 'as', 'to', 'of', 'in', 'be', 'is']
+        articles = ['and','the', 'for', 'a', 'if', 'it', 'its', 'from', 'this', 'at', 'as', 'to', 'of', 'in', 'be', 'is']
         for submission in self.reddit.subreddit("politics").top(limit=100):
             title = submission.title.translate(str.maketrans('','',string.punctuation))
             title_words = title.strip().split()
@@ -136,6 +136,5 @@ class RedditData:
                     else:
                         word_freq[word.lower()] = 1
         word_freq = {k: v for k, v in sorted(word_freq.items(), key=lambda item: item[1], reverse=True)}
-        print(word_freq.keys(), list(word_freq.values())
+        return [list(word_freq.keys()), list(word_freq.values())]
         #return word_freq
-        return 
