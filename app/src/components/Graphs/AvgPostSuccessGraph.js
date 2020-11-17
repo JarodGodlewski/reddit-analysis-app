@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 //import useChartConfig from 'hooks/useChartConfig'
 //import Box from 'components/Box'
-import { Chart } from 'react-charts'
+import { Chart } from 'react-charts';
 //import './graph.css';
 
 const AvgPostSuccessGraph = (props) => {

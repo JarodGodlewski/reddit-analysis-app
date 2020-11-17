@@ -25,7 +25,7 @@ const PerformanceGraphs = () => {
           <h1>Average Post Success Per Hour</h1>
             <p>X Values {graphData.x_values}</p>
             <p>Y Values {graphData.y_values}</p>
-            {recieved ? <div id="APSGraph"> <AvgPostSuccessGraph freshData={chartData} width={400} height={300}/> </div>: <div/>}
+            {received ? <div id="APSGraph"> <AvgPostSuccessGraph freshData={chartData} width={400} height={300}/> </div>: <div/>}
        </div>
     );
 }
