@@ -15,7 +15,6 @@ const Sidebar = ({ isOpen, toggle }) => {
       </Icon>
       <SidebarMenu>
         <SidebarLink to="Home" spy={true} smooth={true}>Home</SidebarLink>
-        <SidebarLink to="Search" spy={true} smooth={true}>Search</SidebarLink>
         <SidebarLink to="APSGraph" spy={true} smooth={true}>Average Post Success Per hour</SidebarLink>
         <SidebarLink to="CommentGraph" spy={true} smooth={true}>Top Level Comments Since Post Created</SidebarLink>
         <SidebarLink to="WordGraphs" spy={true} smooth={true}>Word Correlation Graphs</SidebarLink>
