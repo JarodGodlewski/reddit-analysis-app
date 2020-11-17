@@ -9,9 +9,10 @@ import {
   HeroItems,
   HeroH1,
   HeroP,
-  HeroSearch,
   RedditButton,
-  RedditList
+  Row,
+  Trash,
+  ButtonTableContainer
 } from './HeroElements';
 
 const Hero = ( {setSubReddit} ) => {
@@ -32,11 +33,11 @@ const Hero = ( {setSubReddit} ) => {
           <HeroP>or</HeroP>
           <Search setSubReddit={setSubReddit}/>
         </HeroItems>
-        <RedditList>
+        <ButtonTableContainer>
           {subRedditNames.map((name) => {
-              return <RedditButton onClick = {() => setSubReddit(name)}>{name}</RedditButton>
-          })}
-        </RedditList>
+                return <RedditButton onClick = {() => setSubReddit(name)}>{name}</RedditButton>
+            })}
+        </ButtonTableContainer>
       </HeroContent>
     </HeroContainer>
   );
