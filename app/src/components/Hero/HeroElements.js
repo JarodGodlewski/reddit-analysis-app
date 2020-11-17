@@ -10,6 +10,7 @@ export const HeroContainer = styled.div`
 `;
 
 export const HeroContent = styled.div`
+  display: flex;
   height: calc(100vh - 80px);
   max-height: 100%;
   padding: 0rem calc((100vw - 1300px) / 2);
@@ -33,6 +34,46 @@ export const HeroItems = styled.div`
   }
 `;
 
+export const Row= styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  background: blue;
+  justify-content: center;
+  padding: 0 2rem;
+  width: 100%;
+  height: 200px;
+`;
+
+export const Trash = styled.div`
+  height: 100%;
+  width: 100%;
+  background: green;
+  margin: 5px;
+`;
+
+export const ButtonTableContainer = styled.div`
+  display: grid;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+`;
+
+export const RedditButton = styled.button`
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  border: none;
+  background: #e9ba23;
+  color: #fff;
+  transition: 0.2s ease-out;
+  &:hover {
+    background: #ffc500;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+    color: #000;
+  }
+`;
+
 export const HeroH1 = styled.h1`
   font-size: clamp(2.5rem, 10vw, 5rem);
   margin-bottom: 1rem;
@@ -45,17 +86,3 @@ export const HeroP = styled.p`
   margin-bottom: 2rem;
 `;
 
-export const HeroSearch = styled.button`
-  font-size: 1.4rem;
-  padding: 1rem 4rem;
-  border: none;
-  background: #e9ba23;
-  color: #fff;
-  transition: 0.2s ease-out;
-  &:hover {
-    background: #ffc500;
-    transition: 0.2s ease-out;
-    cursor: pointer;
-    color: #000;
-  }
-`;

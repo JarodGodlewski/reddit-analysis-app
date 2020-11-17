@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react';
 import AvgPostSuccessGraph from './AvgPostSuccessGraph';
  
 const PerformanceGraphs = () => {
-
    const [graphData, setGraphData] = useState([]);
-   const [recieved, setRecieved] = useState(false);
+   const [received, setReceived] = useState(false);
    useEffect( () => {
        fetch('/get_avg_upvote_time')
        .then(res => res.json())
        .then(data => {
            setGraphData(data);
-           setRecieved(true);
+           setReceived(true);
        })
    }, []);
 
@@ -26,8 +25,7 @@ const PerformanceGraphs = () => {
           <h1>Average Post Success Per Hour</h1>
             <p>X Values {graphData.x_values}</p>
             <p>Y Values {graphData.y_values}</p>
-            
-            {recieved ? <div id="APSGraph"> <AvgPostSuccessGraph data={chartData} width={400} height={300}/> </div>: <div/>}
+            {received ? <div id="APSGraph"> <AvgPostSuccessGraph freshData={chartData} width={400} height={300}/> </div>: <div/>}
        </div>
     );
 }

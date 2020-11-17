@@ -1,6 +1,7 @@
   
 import React, { useState } from 'react';
 import Navbar from '../Navbar';
+import Search from '../Search';
 import Sidebar from '../Sidebar';
 import {
   HeroContainer,
@@ -8,11 +9,15 @@ import {
   HeroItems,
   HeroH1,
   HeroP,
-  HeroSearch
+  RedditButton,
+  Row,
+  Trash,
+  ButtonTableContainer
 } from './HeroElements';
 
-const Hero = () => {
+const Hero = ( {setSubReddit} ) => {
   const [isOpen, setIsOpen] = useState(false);
+  const subRedditNames = ["cscareerquestions", "talesfromretail", "csmajors", "fantheories", "bestoflegaladvice", "legaladvice", "Idontworkherelady", "unresolvedmysteries", "MaliciousCompliance", "lifeofnorman"];
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -26,8 +31,13 @@ const Hero = () => {
         <HeroItems>
           <HeroH1>Choose a Provided Reddit:</HeroH1>
           <HeroP>or</HeroP>
-          <HeroSearch>Search for One!</HeroSearch>
+          <Search setSubReddit={setSubReddit}/>
         </HeroItems>
+        <ButtonTableContainer>
+          {subRedditNames.map((name) => {
+                return <RedditButton onClick = {() => setSubReddit(name)}>{name}</RedditButton>
+            })}
+        </ButtonTableContainer>
       </HeroContent>
     </HeroContainer>
   );

@@ -3,21 +3,20 @@ import {render} from 'react-dom';
 import WordCloud from 'react-d3-cloud';
 
 const WordGraphs = () => {
-
     const [graphData, setGraphData] = useState([]);
-    const [recieved, setRecieved] = useState(false);
+    const [received, setReceived] = useState(false);
     useEffect( () => {
         fetch('/get_word_correlation')
             .then(res => res.json())
             .then(data => {
                 setGraphData(data);
-                setRecieved(true);
+                setReceived(true);
             })
     }, []);
-    {recieved ? console.log(graphData.words.length) : console.log('ntohing')};
+    {received ? console.log(graphData.words.length) : console.log('ntohing')};
 
     const wordlist = [];
-    if (recieved) {
+    if (received) {
         for (var i = 0; i < graphData.words.length; i++) {
             var x = {text: graphData.words[i], value:graphData.freq[i]}
             wordlist.push(x)
@@ -34,7 +33,7 @@ const WordGraphs = () => {
        <div id="WordGraphs">
           <h1>Word Correlation Graphs</h1>
           <p>This page will show graphs of sub-reddits word correlations</p>
-          {recieved ? <WordCloud data={wordlist} fontSizeMapper={fontSizeMapper} rotate={rotate}></WordCloud> : <div/>};
+          {received ? <WordCloud data={wordlist} fontSizeMapper={fontSizeMapper} rotate={rotate}></WordCloud> : <div/>};
        </div>
     );
 }
