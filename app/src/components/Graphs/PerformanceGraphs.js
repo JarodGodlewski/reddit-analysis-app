@@ -23,8 +23,7 @@ const PerformanceGraphs = () => {
           <p>This page will show graphs of sub-reddit and post performance.</p>
 
           <h1>Average Post Success Per Hour</h1>
-            <p>X Values {graphData.x_values}</p>
-            <p>Y Values {graphData.y_values}</p>
+    <p>This chart describes the amount of upvotes a post is likely to have based on the time it was posted. This is based upon analysis of the top xx posts on a given subreddit.</p>
             {received ? <div id="APSGraph"> <AvgPostSuccessGraph freshData={chartData} width={400} height={300}/> </div>: <div/>}
        </div>
     );
