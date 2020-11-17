@@ -2,21 +2,23 @@ import React, { useEffect } from 'react';
 import { Chart } from 'react-charts';
 import './graph.css';
 
-const AvgPostSuccessGraph = (props) => {
+const CommentsSincePostGraph = (props) => {
+
 
     const freshData = props.freshData;
 
     var lst = [];
     freshData[0].x.forEach(function (item, index) {
-        lst.push({ x: freshData[0].x[item], y: freshData[0].y[index] })
+        lst.push({ x: freshData[0].x[index], y: freshData[0].y[index] })
 
     });
+    
     var formattedData = lst;
 
     const data = React.useMemo(
         () => [
             {
-                label: 'Average Score',
+                label: 'Total Top Level Comments',
                 data: formattedData
             }
         ],
@@ -35,7 +37,7 @@ const AvgPostSuccessGraph = (props) => {
     return (
         <div className="outer" >
             <div className="AvgYAxis">
-                <p>Points Per Post</p>
+                <p>Total Top Level Comments</p>
             </div>
 
             <div className="OuterGraph">
@@ -43,7 +45,7 @@ const AvgPostSuccessGraph = (props) => {
             </div>
 
             <div className="AvgXAxis">
-                <p>Hours</p>
+                <p>Time Since Posted (Minutes)</p>
             </div>
         </div>
     )
@@ -51,4 +53,4 @@ const AvgPostSuccessGraph = (props) => {
 
 
 
-export default AvgPostSuccessGraph;
+export default CommentsSincePostGraph;

@@ -116,12 +116,11 @@ class RedditData:
         y_values_accum = [y_values[0]]
         for i in range(1,len(y_values)-1):
             y_values_accum.append(y_values_accum[i-1]+y_values[i])
-        print(len(x_values))
-        print(len(y_values))
+
         for i in range(0, len(x_values)-1):
             print(x_values[i], y_values_accum[i])
-        
-        return [x_values, y_values_accum]
+
+        return [x_values[0:len(x_values) - 1], y_values_accum]
 
     def get_word_correlation_data(self):
         word_freq = {}
