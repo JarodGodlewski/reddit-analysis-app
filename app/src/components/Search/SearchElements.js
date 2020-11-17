@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import {SearchField} from "react-search-field";
+import SearchField from 'react-search-field';
 
-export const SearchContainer = styled.form`
+export const SearchContainer = styled.div`
     color: #fff;
 `;
 
-export const SearchInput = styled(SearchField)`
+export const SearchInput = styled.input`
   font-size: 1.4rem;
   padding: 1rem 4rem;
   border: none;

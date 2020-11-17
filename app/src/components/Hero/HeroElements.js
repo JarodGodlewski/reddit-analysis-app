@@ -10,6 +10,7 @@ export const HeroContainer = styled.div`
 `;
 
 export const HeroContent = styled.div`
+  display: flex;
   height: calc(100vh - 80px);
   max-height: 100%;
   padding: 0rem calc((100vw - 1300px) / 2);
@@ -49,7 +50,7 @@ export const RedditList = styled.div`
 
 export const RedditButton = styled.button`
   font-size: 1.4rem;
-  padding: 1rem 4rem;
+  padding: 1rem 2rem;
   border: none;
   background: #e9ba23;
   color: #fff;

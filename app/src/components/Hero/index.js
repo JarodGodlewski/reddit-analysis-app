@@ -34,7 +34,7 @@ const Hero = () => {
           <Search setSubReddit={setSubReddit}/>
         </HeroItems>
         <RedditList
-          container direction="row" justify="center" alignItems="center"
+          
         >
           {subRedditNames.map((name) => {
               return <RedditButton onClick = {() => setSubReddit(name)}>{name}</RedditButton>
