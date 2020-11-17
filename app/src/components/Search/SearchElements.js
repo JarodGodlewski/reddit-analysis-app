@@ -18,4 +18,7 @@ export const SearchInput = styled.input`
     cursor: pointer;
     color: #000;
   }
+  ::placeholder {
+    color: #fff;
+  }
 `;

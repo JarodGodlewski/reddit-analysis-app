@@ -1,19 +1,32 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
- 
+import React, { Component, useEffect, useState } from 'react'; 
 import WordGraphs from './components/Graphs/WordGraphs';
 import PerformanceGraphs from './components/Graphs/PerformanceGraphs';
-import styled from 'styled-components'
 import { GlobalStyle } from './globalStyles';
 import Hero from './components/Hero';
  
 const App = () => {
+  const [subReddit, setSubReddit] = useState("");
+  const [exists, setExists] = useState(false);
+
+  useEffect( () => {
+    setExists(false);
+    fetch('/result', {
+        method:"POST"
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data === true){
+        setExists(true);
+      }
+    })
+}, [subReddit]); 
+
     return ( 
       <>     
         <GlobalStyle />
-        <Hero />
-        <PerformanceGraphs />
-        <WordGraphs />
+        <Hero setSubReddit={setSubReddit}/>
+        { exists ? <PerformanceGraphs /> : <div/>}
+        { exists ? <WordGraphs /> : <div/>}
       </>
     );
   }
