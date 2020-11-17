@@ -14,9 +14,8 @@ import {
   RedditList
 } from './HeroElements';
 
-const Hero = () => {
+const Hero = ( {setSubReddit} ) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [subReddit, setSubReddit] = useState("");
   const subRedditNames = ["cscareerquestions", "talesfromretail", "csmajors", "fantheories", "bestoflegaladvice", "legaladvice", "Idontworkherelady", "unresolvedmysteries", "MaliciousCompliance", "lifeofnorman"];
 
   const toggle = () => {
@@ -33,9 +32,7 @@ const Hero = () => {
           <HeroP>or</HeroP>
           <Search setSubReddit={setSubReddit}/>
         </HeroItems>
-        <RedditList
-          
-        >
+        <RedditList>
           {subRedditNames.map((name) => {
               return <RedditButton onClick = {() => setSubReddit(name)}>{name}</RedditButton>
           })}
