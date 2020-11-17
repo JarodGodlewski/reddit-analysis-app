@@ -12,8 +12,8 @@ const App = () => {
       <>     
         <GlobalStyle />
         <Hero />
-        <PerformanceGraphs id="PerformanceGraphs" />
-        <WordGraphs id="WordGraphs" />
+        <PerformanceGraphs />
+        <WordGraphs />
       </>
     );
   }
