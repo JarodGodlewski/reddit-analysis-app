@@ -15,9 +15,9 @@ class RedditData:
     reddit = None
 
     # list of subreddits to process
-    # subreddit_names = ["cscareerquestions", "talesfromretail", "csmajors", "fantheories", "bestoflegaladvice", "legaladvice", "Idontworkherelady", "unresolvedmysteries", "MaliciousCompliance", "lifeofnorman"]
-    subreddit_names = ["rabbits"]
-    #subreddit_names = ["cscareerquestions", "talesfromretail", "csmajors"]
+    #subreddit_names = ["cscareerquestions", "talesfromretail", "csmajors", "fantheories", "bestoflegaladvice", "legaladvice", "Idontworkherelady", "unresolvedmysteries", "MaliciousCompliance", "lifeofnorman"]
+    #subreddit_names = ["rabbits"]
+    subreddit_names = ["cscareerquestions", "talesfromretail", "csmajors"]
     subreddit_data = []
     time_avg = OrderedDict()
 
@@ -42,7 +42,7 @@ class RedditData:
         for i in range(0, 24):
             self.time_avg[i] = [0, 0, 0]
 
-        #self.get_subreddit_data()
+        self.get_subreddit_data()
 
     # attain subreddit data to use
     # may need to change comment count from len, check api

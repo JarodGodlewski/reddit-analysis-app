@@ -28,6 +28,6 @@ def get_word_correlation_graph():
 
 @app.route('/result', methods = ['POST'])
 def result():
-   print(request.body)
-  return 'true'
+    #print(request.body)
+    return 'true'
     
