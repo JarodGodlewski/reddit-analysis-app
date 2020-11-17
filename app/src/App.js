@@ -25,6 +25,7 @@ const App = () => {
       <>     
         <GlobalStyle />
         <Hero setSubReddit={setSubReddit}/>
+        <PerformanceGraphs />
         { exists ? <PerformanceGraphs /> : <div/>}
         { exists ? <WordGraphs /> : <div/>}
       </>
