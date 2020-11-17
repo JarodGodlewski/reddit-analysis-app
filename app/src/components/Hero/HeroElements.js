@@ -34,18 +34,29 @@ export const HeroItems = styled.div`
   }
 `;
 
-export const RedditList = styled.div`
-  display: grid;
+export const Row= styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  background: blue;
   justify-content: center;
   padding: 0 2rem;
-  width: 400px;
-  color: #fff;
-  text-transform: uppercase;
-  line-height: 1;
-  font-weight: bold;
-  @media screen and (max-width: 650px) {
-    width: 100%;
-  }
+  width: 100%;
+  height: 200px;
+`;
+
+export const Trash = styled.div`
+  height: 100%;
+  width: 100%;
+  background: green;
+  margin: 5px;
+`;
+
+export const ButtonTableContainer = styled.div`
+  display: grid;
+  width: 100%;
+  height: 100%;
+  background: #fff;
 `;
 
 export const RedditButton = styled.button`
